@@ -40,3 +40,5 @@ export const store = configureStore({
 
 // створюємо persistor для нашого store
 export const persistor = persistStore(store);
+
+// https://64739e80d784bccb4a3cc766.mockapi.io/
