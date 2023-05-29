@@ -1,9 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
-import initialContacts from '../components/contacts.json';
 
 const initialState = {
-  // ініціалізація із файлу contact.json
-  items: initialContacts,
+  items: [],
+  isLoading: false,
+  error: null,
 };
 
 // Slice для поля 'contacts' з файлу store.js
