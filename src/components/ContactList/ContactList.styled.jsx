@@ -33,3 +33,7 @@ export const ListBtnDel = styled.button`
     }
   }
 `;
+
+export const Text = styled.p`
+  text-align: center;
+`;

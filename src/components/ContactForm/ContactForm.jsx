@@ -12,13 +12,13 @@ import {
   FieldInput,
 } from './ContactForm.styled';
 import { useDispatch, useSelector } from 'react-redux';
-import { addContact } from 'redux/contactsSlice';
 import { getContacts } from 'redux/selectors';
 import {
   notificationMassege,
   notificationOptions,
 } from 'components/Notification/Notification';
 import { toast } from 'react-toastify';
+import { addContact } from 'redux/operations';
 
 // валідація полів форми
 const ContactSchema = Yup.object().shape({

@@ -1,5 +1,5 @@
 import { FaUserMinus } from 'react-icons/fa';
-import { Item, List, ListBtnDel } from './ContactList.styled';
+import { Item, List, ListBtnDel, Text } from './ContactList.styled';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   getContacts,
@@ -7,9 +7,8 @@ import {
   getFilter,
   getIsLoading,
 } from 'redux/selectors';
-import { deleteContact } from 'redux/contactsSlice';
 import { useEffect } from 'react';
-import { fetchContacts } from 'redux/operations';
+import { deleteContact, fetchContacts } from 'redux/operations';
 import { Loader } from 'components/Loader/Loader';
 
 export const ContactList = () => {
@@ -19,8 +18,10 @@ export const ContactList = () => {
   const isLoading = useSelector(getIsLoading);
   const error = useSelector(getError);
   // Для того щоб сповістити сторінку про те, що в інтерфейсі відбулася якась подія, необхідно відправити екшен.
+  // Екшени - це об'єкти, які передають дані з компонентів у стор, тим самим сигналізуючи про те, яка подія сталася в інтерфейсі. Вони являються єдиним джерелом інформації для стору.
   const dispatch = useDispatch();
 
+  //
   useEffect(() => {
     dispatch(fetchContacts());
   }, [dispatch]);
@@ -55,11 +56,11 @@ export const ContactList = () => {
 
       {/* якщо нема контактів */}
       {contacts.length === 0 && (
-        <p>'Sorry, there are no contacts in your PhoneBook.'</p>
+        <Text>Sorry, there are no contacts in your PhoneBook.</Text>
       )}
 
       {/* помилка запиту */}
-      {error && <p>{error}</p>}
+      {error && <Text>{error}</Text>}
     </>
   );
 };
