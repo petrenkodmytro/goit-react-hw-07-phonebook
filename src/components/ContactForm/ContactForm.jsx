@@ -12,7 +12,7 @@ import {
   FieldInput,
 } from './ContactForm.styled';
 import { useDispatch, useSelector } from 'react-redux';
-import { getContacts } from 'redux/selectors';
+import { selectContacts } from 'redux/selectors';
 import {
   notificationMassege,
   notificationOptions,
@@ -40,9 +40,9 @@ export const ContactForm = () => {
   // Для того щоб сповістити сторінку про те, що в інтерфейсі відбулася якась подія, необхідно відправити екшен. Для цього у бібліотеці React Redux є хук useDispatch(), який повертає посилання на функцію надсилання екшенів dispatch з об'єкта створеного нами раніше стора Redux.
   const dispatch = useDispatch();
   // Отримуємо необхідну частину стану зі стору
-  const contacts = useSelector(getContacts);
+  const contacts = useSelector(selectContacts);
 
-  // console.log(getContacts);
+  // console.log(selectContacts);
 
   return (
     <Formik

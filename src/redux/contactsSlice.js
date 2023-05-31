@@ -43,8 +43,8 @@ const contactsSlice = createSlice({
   // builder - об'єкт з методами. Метод addCase для обробки action
   // builder.addCase(actionCreatorOrType, reducer)
   // actionCreatorOrType - тип екшену який будемо опрацьовувати
-  // reducer - редюсер який буде обробляти цей екшен
-  
+  // reducer - редюсер, який буде обробляти цей екшен
+
   // функціональна форма
   extraReducers: builder =>
     builder

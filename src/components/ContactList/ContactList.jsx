@@ -2,10 +2,9 @@ import { FaUserMinus } from 'react-icons/fa';
 import { Item, List, ListBtnDel, Text } from './ContactList.styled';
 import { useDispatch, useSelector } from 'react-redux';
 import {
-  getContacts,
-  getError,
-  getFilter,
-  getIsLoading,
+  selectError,
+  selectIsLoading,
+  selectvisibleContacts,
 } from 'redux/selectors';
 import { useEffect } from 'react';
 import { deleteContact, fetchContacts } from 'redux/operations';
@@ -13,27 +12,16 @@ import { Loader } from 'components/Loader/Loader';
 
 export const ContactList = () => {
   // Отримуємо необхідну частину стану зі стору
-  const contacts = useSelector(getContacts);
-  const filter = useSelector(getFilter);
-  const isLoading = useSelector(getIsLoading);
-  const error = useSelector(getError);
+  const visibleContacts = useSelector(selectvisibleContacts);
+  const isLoading = useSelector(selectIsLoading);
+  const error = useSelector(selectError);
   // Для того щоб сповістити сторінку про те, що в інтерфейсі відбулася якась подія, необхідно відправити екшен.
   // Екшени - це об'єкти, які передають дані з компонентів у стор, тим самим сигналізуючи про те, яка подія сталася в інтерфейсі. Вони являються єдиним джерелом інформації для стору.
   const dispatch = useDispatch();
 
-  //
   useEffect(() => {
     dispatch(fetchContacts());
   }, [dispatch]);
-
-  const normalizeFilter = filter.toLocaleLowerCase();
-  const visibleContacts = contacts
-    ?.filter(contact =>
-      contact?.name?.toLocaleLowerCase().includes(normalizeFilter)
-    )
-    .sort((firstName, secondName) =>
-      firstName.name.localeCompare(secondName.name)
-    );
 
   const delContact = contactId => dispatch(deleteContact(contactId));
 
@@ -55,7 +43,7 @@ export const ContactList = () => {
       </List>
 
       {/* якщо нема контактів */}
-      {contacts.length === 0 && (
+      {visibleContacts.length === 0 && (
         <Text>Sorry, there are no contacts in your PhoneBook.</Text>
       )}
 
