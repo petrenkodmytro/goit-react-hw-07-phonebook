@@ -87,6 +87,6 @@ const contactsSlice = createSlice({
   // },
 });
 
-// console.log(contactsSlice);
+// console.log(contactsSlice.reducer);
 
 export const contactsReducer = contactsSlice.reducer;

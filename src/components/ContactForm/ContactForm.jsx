@@ -1,6 +1,5 @@
 import { Formik } from 'formik';
 import * as Yup from 'yup';
-import { nanoid } from 'nanoid';
 import { FaUserPlus, FaUser } from 'react-icons/fa';
 import { BsFillTelephoneFill } from 'react-icons/bs';
 import {
@@ -65,7 +64,7 @@ export const ContactForm = () => {
           );
           return;
         }
-        dispatch(addContact({ ...values, id: nanoid() }));
+        dispatch(addContact({ ...values }));
         // console.log(values);
         actions.resetForm();
       }}
